@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>สื่อโต้ตอบ ม.1 | แบบจำลองอนุภาคของสสารแต่ละสถานะ</title>
+<style>
+:root{--navy:#183153;--blue:#2463eb;--paper:#f4f7fb;--ink:#172033;--muted:#5b667a;--border:#dce5f0}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Tahoma,"Noto Sans Thai",sans-serif;line-height:1.65}
+header{background:linear-gradient(120deg,#183153,#2877d8);color:white;padding:28px 18px 32px}header .wrap,main{max-width:1080px;margin:auto}
+h1{font-size:clamp(1.7rem,5vw,2.7rem);margin:.3rem 0}.eyebrow{font-size:.85rem;opacity:.9}header p{max-width:800px;margin:.4rem 0 0}
+main{padding:20px 14px 40px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}.card{background:white;border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:0 5px 18px #1831530b;margin-bottom:16px}
+h2{font-size:1.3rem;color:var(--navy);margin:0 0 10px}h3{font-size:1.05rem;margin:.3rem 0}.muted{color:var(--muted);font-size:.94rem}
+.pill{display:inline-block;border-radius:99px;padding:3px 10px;background:#e6f0ff;color:#204e9c;font-size:.86rem;font-weight:bold}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}label{font-weight:bold;display:block;margin-bottom:5px}select,input[type=range],button{font:inherit}select,button{padding:10px 12px;border-radius:10px;border:1px solid #cbd5e1}select{width:100%;background:white}button{background:var(--blue);color:white;border:0;font-weight:bold;cursor:pointer}button.secondary{background:#e8eef8;color:var(--navy)}input[type=range]{width:100%;accent-color:var(--blue)}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #f4b942;outline-offset:2px}
+canvas{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--border);background:#f8fbff}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}.metric{background:#f1f6fc;border-radius:12px;padding:10px;text-align:center}.metric strong{display:block;font-size:1.05rem;color:var(--navy)}
+.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}.compare article{border:1px solid var(--border);border-radius:12px;padding:12px}.compare .big{font-size:1.8rem}
+.question{padding:13px 0;border-bottom:1px solid #e7edf5}.question:last-child{border:0}.options{display:grid;gap:7px;margin:8px 0}.options label{font-weight:normal;border:1px solid var(--border);border-radius:10px;padding:8px 10px;cursor:pointer}.options input{margin-right:7px}.feedback{padding:10px 12px;border-radius:10px;margin-top:8px;background:#f0f5fb}.good{background:#e7f7ee;color:#145c35}.bad{background:#fff0ed;color:#8d2b20}
+footer{text-align:center;padding:12px;color:var(--muted);font-size:.85rem}
+@media(max-width:560px){.controls{grid-template-columns:1fr}.metrics{grid-template-columns:1fr}.card{padding:15px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="eyebrow">สื่อการเรียนรู้แบบโต้ตอบ • วิทยาศาสตร์ ม.1</div>
+<h1>แบบจำลองอนุภาคของสสารแต่ละสถานะ</h1>
+<p>สำรวจว่าอนุภาคของของแข็ง ของเหลว และแก๊สเรียงตัวและเคลื่อนที่แตกต่างกันอย่างไร พร้อมทดลองปรับอุณหภูมิในแบบจำลองและจำแนกสารรอบตัว</p>
+</div></header>
+<main>
+<section class="grid">
+<div class="card">
+<h2>1. แนวคิดสำคัญ</h2>
+<p><b>สสาร</b> ประกอบด้วยอนุภาคขนาดเล็กมาก ซึ่งมีการเคลื่อนที่อยู่เสมอ แบบจำลองช่วยให้เรามองเห็นการจัดเรียงและการเคลื่อนที่ของอนุภาคได้ง่ายขึ้น</p>
+<div class="compare">
+<article><div class="big">🧊</div><h3>ของแข็ง</h3><p class="muted">อนุภาคอยู่ชิดกัน จัดเรียงค่อนข้างเป็นระเบียบ สั่นรอบตำแหน่งเดิม จึงมีรูปร่างและปริมาตรคงตัว</p></article>
+<article><div class="big">💧</div><h3>ของเหลว</h3><p class="muted">อนุภาคอยู่ใกล้กันแต่เลื่อนผ่านกันได้ รูปร่างเปลี่ยนตามภาชนะ แต่ปริมาตรค่อนข้างคงตัว</p></article>
+<article><div class="big">💨</div><h3>แก๊ส</h3><p class="muted">อนุภาคอยู่ห่างกัน เคลื่อนที่อิสระได้มาก กระจายเต็มภาชนะ รูปร่างและปริมาตรไม่คงตัว</p></article>
+</div>
+<p class="muted">หมายเหตุ: ภาพอนุภาคเป็นแบบจำลองอย่างง่าย ไม่ได้แสดงขนาดหรือระยะห่างจริงตามสัดส่วน</p>
+</div>
+<div class="card">
+<h2>2. ทดลองเปรียบเทียบอนุภาค</h2>
+<p>เลือกสถานะเพื่อเปลี่ยนแบบจำลอง แล้วสังเกตระยะห่าง การจัดเรียง และการเคลื่อนที่</p>
+<div class="controls">
+<div><label for="state">สถานะของสสาร</label><select id="state"><option value="solid">ของแข็ง</option><option value="liquid">ของเหลว</option><option value="gas">แก๊ส</option></select></div>
+<div><label for="temp">ระดับพลังงานความร้อนในแบบจำลอง: <span id="tempLabel">ปานกลาง</span></label><input id="temp" type="range" min="1" max="3" value="2" step="1"></div>
+</div>
+<canvas id="particles" width="700" height="390" aria-label="แบบจำลองอนุภาคที่เคลื่อนไหวตามสถานะของสสาร"></canvas>
+<div class="metrics">
+<div class="metric">การจัดเรียง<strong id="arrangement">เป็นระเบียบและชิดกัน</strong></div>
+<div class="metric">การเคลื่อนที่<strong id="motion">สั่นรอบตำแหน่งเดิม</strong></div>
+<div class="metric">การกระจาย<strong id="spread">อยู่รวมกันเป็นกลุ่ม</strong></div>
+</div>
+<p id="modelNote" class="muted" aria-live="polite">อนุภาคสั่นรอบตำแหน่งเดิม โดยยังคงอยู่ใกล้เพื่อนบ้าน</p>
+<div><button id="toggle">หยุดการเคลื่อนที่</button> <button id="shuffle" class="secondary">จัดอนุภาคใหม่</button></div>
+</div>
+</section>
+
+<section class="card">
+<h2>3. กราฟการสังเกตแบบเรียลไทม์</h2>
+<p>กราฟแสดง <b>ความเร็วเชิงแบบจำลอง</b> ของอนุภาคตามระดับพลังงานความร้อนที่เลือก ไม่ใช่ค่าความเร็วจริงที่วัดจากสาร</p>
+<canvas id="graph" width="900" height="310" aria-label="กราฟความเร็วเชิงแบบจำลองของอนุภาคเทียบกับระดับพลังงานความร้อน"></canvas>
+<p class="muted">เมื่อระดับพลังงานความร้อนเพิ่มขึ้น อนุภาคในแบบจำลองจะเคลื่อนที่เร็วขึ้น โดยความแตกต่างของการจัดเรียงยังขึ้นกับสถานะที่เลือก</p>
+</section>
+
+<section class="card">
+<h2>4. จำแนกสารในชีวิตประจำวัน</h2>
+<p>เลือกสถานะที่ตรงกับสารหรือสิ่งของในสภาพปกติที่พบได้ทั่วไป</p>
+<div class="grid">
+<div><label for="item1">น้ำแข็ง</label><select id="item1"><option value="">-- เลือกสถานะ --</option><option value="solid">ของแข็ง</option><option value="liquid">ของเหลว</option><option value="gas">แก๊ส</option></select></div>
+<div><label for="item2">น้ำดื่ม</label><select id="item2"><option value="">-- เลือกสถานะ --</option><option value="solid">ของแข็ง</option><option value="liquid">ของเหลว</option><option value="gas">แก๊ส</option></select></div>
+<div><label for="item3">อากาศในลูกโป่ง</label><select id="item3"><option value="">-- เลือกสถานะ --</option><option value="solid">ของแข็ง</option><option value="liquid">ของเหลว</option><option value="gas">แก๊ส</option></select></div>
+</div>
+<button id="checkItems" style="margin-top:12px">ตรวจคำตอบ</button> <button id="resetItems" class="secondary" style="margin-top:12px">ล้างคำตอบ</button>
+<div id="itemFeedback" class="feedback" hidden aria-live="polite"></div>
+</section>
+
+<section class="card">
+<h2>5. คำถามท้ายกิจกรรม 3 ข้อ</h2>
+<p>เลือกคำตอบ แล้วกดตรวจคำตอบเพื่อดูคะแนนและเฉลย</p>
+<form id="quiz">
+<div class="question"><b>ข้อ 1.</b> ข้อใดอธิบายอนุภาคของของแข็งได้เหมาะสมที่สุด?
+<div class="options"><label><input type="radio" name="q1" value="a"> อยู่ห่างกันมากและเคลื่อนที่ทั่วภาชนะ</label><label><input type="radio" name="q1" value="b"> อยู่ชิดกันและสั่นรอบตำแหน่งเดิม</label><label><input type="radio" name="q1" value="c"> เลื่อนผ่านกันได้อย่างอิสระเหมือนของเหลว</label></div><div class="feedback" id="f1" hidden></div></div>
+<div class="question"><b>ข้อ 2.</b> เหตุใดของเหลวจึงเปลี่ยนรูปร่างตามภาชนะ แต่ยังมีปริมาตรค่อนข้างคงตัว?
+<div class="options"><label><input type="radio" name="q2" value="a"> อนุภาคอยู่ใกล้กันและเลื่อนผ่านกันได้</label><label><input type="radio" name="q2" value="b"> อนุภาคอยู่ห่างกันมากจนเต็มภาชนะ</label><label><input type="radio" name="q2" value="c"> อนุภาคไม่เคลื่อนที่เลย</label></div><div class="feedback" id="f2" hidden></div></div>
+<div class="question"><b>ข้อ 3.</b> ข้อใดเป็นแก๊สในชีวิตประจำวัน?
+<div class="options"><label><input type="radio" name="q3" value="a"> ก้อนน้ำแข็ง</label><label><input type="radio" name="q3" value="b"> น้ำในแก้ว</label><label><input type="radio" name="q3" value="c"> อากาศในลูกโป่ง</label></div><div class="feedback" id="f3" hidden></div></div>
+<button type="submit">ตรวจคำตอบ</button> <button type="button" id="answers" class="secondary">แสดงเฉลย</button>
+<div id="score" style="font-weight:bold;margin-top:12px" aria-live="polite"></div>
+</form>
+</section>
+<section class="card">
+<h2>6. สรุปสิ่งที่ค้นพบ</h2>
+<ul><li>ของแข็ง: อนุภาคชิดกัน สั่นรอบตำแหน่งเดิม รูปร่างและปริมาตรคงตัว</li><li>ของเหลว: อนุภาคอยู่ใกล้กันและเลื่อนผ่านกันได้ เปลี่ยนรูปร่างตามภาชนะ</li><li>แก๊ส: อนุภาคอยู่ห่างกัน เคลื่อนที่อิสระและกระจายเต็มภาชนะ</li><li>เมื่อพลังงานความร้อนเพิ่มขึ้น โดยทั่วไปการเคลื่อนที่ของอนุภาคจะเร็วขึ้น</li></ul>
+<p><b>ชวนคิด:</b> ถ้าเปิดฝาขวดน้ำหอม กลิ่นสามารถกระจายไปทั่วห้องได้ การเคลื่อนที่ของอนุภาคแก๊สช่วยอธิบายเหตุการณ์นี้อย่างไร?</p>
+</section>
+</main>
+<footer>สื่อประกอบการเรียนรู้วิทยาศาสตร์ ม.1 • ใช้งานได้โดยไม่ต้องเชื่อมต่ออินเทอร์เน็ต</footer>
+<script>
+const $=id=>document.getElementById(id);
+const canvas=$('particles'),ctx=canvas.getContext('2d'),g=$('graph').getContext('2d');
+let state='solid',heat=2,running=true,last=0,particles=[],tick=0;
+const labels={solid:{arr:'เป็นระเบียบและชิดกัน',motion:'สั่นรอบตำแหน่งเดิม',spread:'อยู่รวมกันเป็นกลุ่ม',note:'อนุภาคสั่นรอบตำแหน่งเดิม โดยยังคงอยู่ใกล้เพื่อนบ้าน'},liquid:{arr:'ชิดกันแต่ไม่เป็นระเบียบตายตัว',motion:'เลื่อนผ่านกันได้',spread:'รวมตัวอยู่บริเวณก้นภาชนะ',note:'อนุภาคอยู่ใกล้กันและเลื่อนเปลี่ยนตำแหน่ง ทำให้ของเหลวไหลได้'},gas:{arr:'อยู่ห่างกันมาก',motion:'เคลื่อนที่อิสระหลายทิศทาง',spread:'กระจายเต็มภาชนะ',note:'อนุภาคเคลื่อนที่อิสระและกระจายไปทั่วภาชนะ'}};
+function rand(a,b){return a+Math.random()*(b-a)}
+function createParticles(){particles=[];let n=48;if(state==='solid'){let cols=8,rows=6,dx=49,dy=48;for(let r=0;r<rows;r++)for(let c=0;c<cols;c++)particles.push({x:140+c*dx,y:70+r*dy,ox:140+c*dx,oy:70+r*dy,vx:0,vy:0});}
+else if(state==='liquid'){for(let i=0;i<n;i++){let x,y;do{x=rand(115,585);y=rand(210,345)}while(particles.some(p=>Math.hypot(p.x-x,p.y-y)<21));particles.push({x,y,ox:x,oy:y,vx:rand(-.6,.6),vy:rand(-.6,.6)});}}
+else{for(let i=0;i<n;i++)particles.push({x:rand(55,645),y:rand(45,345),vx:rand(-1,1),vy:rand(-1,1),ox:0,oy:0});}}
+function drawContainer(){ctx.strokeStyle='#8ca4bd';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(30,25);ctx.lineTo(30,360);ctx.lineTo(670,360);ctx.lineTo(670,25);ctx.stroke();ctx.fillStyle='#5b667a';ctx.font='16px Tahoma';ctx.textAlign='left';ctx.fillText(state==='solid'?'ของแข็ง':state==='liquid'?'ของเหลว':'แก๊ส',42,20);}
+function drawParticles(){let w=canvas.width,h=canvas.height;ctx.clearRect(0,0,w,h);drawContainer();let speed=heat*.45;
+particles.forEach(p=>{if(running){if(state==='solid'){p.x=p.ox+Math.sin(tick*speed+p.oy)*2.2*heat;p.y=p.oy+Math.cos(tick*speed+p.ox)*2.2*heat;}
+else if(state==='liquid'){p.x+=p.vx*speed*2;p.y+=p.vy*speed*2;if(p.x<48||p.x>652)p.vx*=-1;if(p.y<195||p.y>350)p.vy*=-1;p.x=Math.max(48,Math.min(652,p.x));p.y=Math.max(195,Math.min(350,p.y));}
+else{p.x+=p.vx*speed*2.2;p.y+=p.vy*speed*2.2;if(p.x<40||p.x>660)p.vx*=-1;if(p.y<35||p.y>350)p.vy*=-1;}}
+ctx.beginPath();ctx.arc(p.x,p.y,7,0,Math.PI*2);ctx.fillStyle=state==='solid'?'#3276cf':state==='liquid'?'#1a9bb6':'#e38a35';ctx.fill();ctx.strokeStyle='#ffffff';ctx.lineWidth=1.5;ctx.stroke();});
+ctx.fillStyle='#183153';ctx.font='15px Tahoma';ctx.fillText('ระดับพลังงานความร้อน: '+['ต่ำ','ปานกลาง','สูง'][heat-1],42,382);}
+function drawGraph(){let c=$('graph'),x=g,w=c.width,h=c.height;x.clearRect(0,0,w,h);let l=78,r=30,t=36,b=55,pw=w-l-r,ph=h-t-b;x.fillStyle='#183153';x.font='bold 20px Tahoma';x.textAlign='center';x.fillText('ความเร็วเชิงแบบจำลองกับระดับพลังงานความร้อน',w/2,25);x.strokeStyle='#dce5f0';x.lineWidth=1;x.font='14px Tahoma';x.fillStyle='#5b667a';x.textAlign='right';for(let i=0;i<=4;i++){let yy=t+ph-i*ph/4;x.beginPath();x.moveTo(l,yy);x.lineTo(l+pw,yy);x.stroke();x.fillText(String(i*25),l-10,yy+5);}x.textAlign='center';for(let i=0;i<=3;i++){let xx=l+i*pw/3;x.beginPath();x.moveTo(xx,t);x.lineTo(xx,t+ph);x.stroke();x.fillText(['ต่ำ','ปานกลาง','สูง'][i]||'สูง',xx,t+ph+22);}x.save();x.translate(20,t+ph/2);x.rotate(-Math.PI/2);x.fillStyle='#183153';x.fillText('ความเร็วสัมพัทธ์ (หน่วยสมมติ)',0,0);x.restore();x.fillStyle='#183153';x.fillText('ระดับพลังงานความร้อน',l+pw/2,h-10);
+let vals=[18,48,82];x.strokeStyle='#2463eb';x.lineWidth=4;x.beginPath();vals.forEach((v,i)=>{let xx=l+i*pw/2,yy=t+ph-v/100*ph;if(i===0)x.moveTo(xx,yy);else x.lineTo(xx,yy)});x.stroke();let xx=l+(heat-1)*pw/2,yy=t+ph-vals[heat-1]/100*ph;x.fillStyle='#e4572e';x.beginPath();x.arc(xx,yy,8,0,Math.PI*2);x.fill();}
+function update(){state=$('state').value;heat=+$('temp').value;$('tempLabel').textContent=['ต่ำ','ปานกลาง','สูง'][heat-1];let d=labels[state];$('arrangement').textContent=d.arr;$('motion').textContent=d.motion;$('spread').textContent=d.spread;$('modelNote').textContent=d.note;createParticles();drawParticles();drawGraph();}
+function loop(ts){if(running&&ts-last>25){tick+=.04;last=ts;drawParticles();}requestAnimationFrame(loop);}
+$('state').addEventListener('change',update);$('temp').addEventListener('input',()=>{heat=+$('temp').value;$('tempLabel').textContent=['ต่ำ','ปานกลาง','สูง'][heat-1];drawGraph();});$('toggle').addEventListener('click',()=>{running=!running;$('toggle').textContent=running?'หยุดการเคลื่อนที่':'เล่นการเคลื่อนที่';});$('shuffle').addEventListener('click',()=>{createParticles();drawParticles();});
+const correct={q1:{v:'b',a:'เฉลย: อนุภาคของของแข็งอยู่ชิดกันและสั่นรอบตำแหน่งเดิม จึงรักษารูปร่างได้'},q2:{v:'a',a:'เฉลย: อนุภาคของของเหลวอยู่ใกล้กันจึงมีปริมาตรค่อนข้างคงตัว แต่เลื่อนผ่านกันได้จึงเปลี่ยนรูปร่างตามภาชนะ'},q3:{v:'c',a:'เฉลย: อากาศเป็นส่วนผสมของแก๊สหลายชนิด จึงเป็นตัวอย่างของสถานะแก๊ส'}};
+function reveal(){let score=0,answered=0;Object.entries(correct).forEach(([q,a],i)=>{let sel=document.querySelector('input[name="'+q+'"]:checked'),box=$('f'+(i+1));box.hidden=false;box.className='feedback';if(sel){answered++;if(sel.value===a.v){score++;box.classList.add('good');box.textContent='ถูกต้อง! '+a.a;}else{box.classList.add('bad');box.textContent='ยังไม่ถูก '+a.a;}}else box.textContent=a.a;});$('score').textContent='คะแนน: '+score+'/3 (ตอบแล้ว '+answered+'/3 ข้อ)';}
+$('quiz').addEventListener('submit',e=>{e.preventDefault();reveal();});$('answers').addEventListener('click',reveal);
+const itemAnswers={item1:'solid',item2:'liquid',item3:'gas'};$('checkItems').addEventListener('click',()=>{let right=0,done=0;for(let [id,a] of Object.entries(itemAnswers)){let v=$(id).value;if(v)done++;if(v===a)right++;}let f=$('itemFeedback');f.hidden=false;f.className='feedback '+(right===3?'good':'');f.textContent='ได้ '+right+'/3 ข้อถูกต้อง'+(done<3?' — กรุณาเลือกสถานะให้ครบทั้ง 3 รายการ':'')+'. เฉลย: น้ำแข็งเป็นของแข็ง น้ำดื่มเป็นของเหลว อากาศในลูกโป่งเป็นแก๊ส';});$('resetItems').addEventListener('click',()=>{for(let id of Object.keys(itemAnswers))$(id).value='';$('itemFeedback').hidden=true;});
+createParticles();update();requestAnimationFrame(loop);
+</script>
+</body>
+</html>
